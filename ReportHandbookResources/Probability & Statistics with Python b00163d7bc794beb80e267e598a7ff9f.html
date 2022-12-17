@@ -1,0 +1,757 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Probability &amp; Statistics with Python.</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="b00163d7-bc79-4beb-80e2-67e598a7ff9f" class="page sans"><header><h1 class="page-title">Probability &amp; Statistics with<strong><mark class="highlight-blue"> Python.</mark></strong></h1></header><div class="page-body"><blockquote id="f116419b-0472-4fb5-9ed0-eda4877cedde" class="block-color-blue_background"><mark class="highlight-orange"><strong>Discrete Uniform Distribution</strong></mark><strong>:</strong><p id="5978c1e2-ce61-404c-8e13-b672c8957e07" class="">Bài toán:</p><figure id="57139fbf-6b35-4125-a6a3-6dcc7f901960" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled.png"><img style="width:1251px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled.png"/></a></figure><p id="d9c7cbb9-e0d8-4bb8-8b84-daf61ba973fa" class="">Code:</p><pre id="d71b1445-8e70-4bab-8095-a07c8dbcd489" class="code code-wrap"><code>import math
+print(&quot;input interval [a,b]&quot;)
+a = int(input(&quot;input a:&quot;))
+b = int(input(&quot;input b:&quot;))
+choice = int(input(&quot;Choose: 1,P(X&lt;k)   2,P(X &gt;= k) &quot;))
+if choice == 1:
+    k = int(input(&quot;P(X&lt;k) replace k:&quot;))
+    prob = 1/(k-a)
+    mean = (a+b)/2
+    sd = math.sqrt(((b-a+1)**2-1)/12)
+    print(f&#x27;P(X&lt;{k})={round(prob, 2)}, Mean: {mean}, Standard deviation: {sd}&#x27;)
+else:
+    k = int(input(&quot;P(X&gt;=k) replace k:&quot;))
+    prob = 1 -(1 / (k - a))
+    mean = (a + b) / 2
+    sd = math.sqrt(((b - a + 1) ** 2 - 1) / 12)
+    print(f&#x27;P(X&gt;={k})={round(prob, 2)}, Mean: {mean}, Standard deviation: {sd}&#x27;)</code></pre><p id="20b69a04-171f-4318-8c4c-78d1c4b5d4ef" class="">Output:</p><figure id="60449a64-fd6f-4275-8cc6-e6141568c396" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%201.png"><img style="width:794px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%201.png"/></a></figure></blockquote><blockquote id="de297e76-424d-448c-b267-926f5565b806" class="block-color-blue_background"><mark class="highlight-orange"><strong>Binomial Distribution</strong></mark><strong>:</strong><p id="34206252-6f0a-4740-88ce-661de724753e" class=""><span style="border-bottom:0.05em solid">1</span>:</p><p id="d89c2cf8-8d49-4149-a02a-b4cc3152ab6d" class="">Bài toán:</p><figure id="b61d977c-1bbd-4fa0-89cf-61a40106281b" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%202.png"><img style="width:1290px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%202.png"/></a></figure><p id="1839390b-5d70-4d1e-9327-66c138137f62" class="">Code:</p><pre id="0ffded8c-6259-44ca-b458-08b410c286ef" class="code code-wrap"><code>n = int(input(&quot;Enter numbers of random experiment:&quot;))
+p = float(input(&quot;Enter the probability:&quot;))
+mean = n*p
+variance = n*p*(1-p)
+print(&quot;the mean and variance is:&quot;,mean,&quot;and&quot;,variance,&quot;respectively.&quot;)</code></pre><p id="fcd19583-3f9e-49da-a2ae-58f0ce7964db" class="">Output:</p><figure id="01e9cab9-20e1-484b-8ccc-75bb8f994151" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%203.png"><img style="width:629px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%203.png"/></a></figure><p id="ff2b4cd1-0292-48c2-90df-880167a8ab30" class="">2:</p><p id="4001a9be-4fb1-47db-af38-379db995bcfa" class="">Bài toán:</p><figure id="4d8fe70c-4888-47b6-b8ad-c082fc1ae68b" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%204.png"><img style="width:1287px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%204.png"/></a></figure><p id="d4847553-9f36-4dd4-97a1-286d6ec6447c" class="">Code:</p><pre id="88ab21e9-1d3f-4364-bc79-9e42b36c7dbc" class="code code-wrap"><code>import math
+n = int(input(&quot;Enter numbers of random experiment:&quot;))
+p = float(input(&quot;Enter the probability:&quot;))
+x = int(input(f&quot;Number of event in {n} random experiment:&quot;))
+result = math.comb(n,x)*p**x*(1-p)**(n-x)
+print(&quot;The probability is:&quot;, round(result,4))</code></pre><p id="132d98f1-efb7-4a32-aa59-3ae42562bdaa" class="">Output:</p><figure id="f5d74726-b28b-46b9-8746-1a00de209f62" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%205.png"><img style="width:525px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%205.png"/></a></figure></blockquote><blockquote id="229beaf3-4303-4fb1-b638-279df23c600c" class="block-color-blue_background"><mark class="highlight-orange"><strong>Geometric Distribution:</strong></mark><p id="4a0f45ee-a030-4f3c-a80e-f5c5c318997b" class="">Bài toán:</p><figure id="6b2ba49d-153a-4407-b241-de8afbe71aca" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%206.png"><img style="width:1277px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%206.png"/></a></figure><p id="e5a0594c-2b9f-45d7-b9bf-a465c4e1ba9b" class="">Code:</p><pre id="f361ef85-aba0-4eae-ab30-a36bb096c4e1" class="code code-wrap"><code>k = int(input(&quot;Number of the random experiment until having the event:&quot;))
+p = float(input(&quot;Probability of the event:&quot;))
+result = (1-p)**(k-1) * p
+print(f&quot;The probability that the the event appear after {k} times is: {round(result,4)}&quot;)</code></pre><p id="dc263f04-1925-4655-b8a7-1ee81bfa1f58" class="">Output:</p><figure id="6aab90bf-a944-432e-acb2-36c5d431fdc8" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%207.png"><img style="width:825px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%207.png"/></a></figure><ul id="4cb731fc-7982-4b05-a069-15e3aeb7b730" class="bulleted-list"><li style="list-style-type:disc"><strong>Negative Binomial Distribution:</strong><p id="7cbf67f5-b645-4839-a5dc-4bb1f2621442" class="">Bài toán:</p><figure id="add934f9-c924-4ab5-b8b4-15a26c9b7593" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%208.png"><img style="width:1297px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%208.png"/></a></figure><p id="0922e8e4-81db-484c-b337-e200b0e46e17" class="">Code:</p><pre id="975b272d-24e5-4e7e-9f6d-ba41d182e58f" class="code code-wrap"><code>import math
+p = float(input(&quot;Probability of the event:&quot;))
+r = int(input(&quot;Number of events:&quot;))
+k = int(input(f&quot;Number of the random experiment until having {r} event:&quot;))
+result = math.comb(k-1,r-1)*p**r*(1-p)**(k-r)
+print(f&quot;Probability that in the next {k} samples, there is {r} events is: {round(result,4)}&quot;)</code></pre><p id="d24aa3cf-609c-4567-b96e-768a2dea2324" class="">Output:</p><figure id="7f456bdd-8f35-4ea4-a066-e96faeab77b2" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%209.png"><img style="width:862px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%209.png"/></a></figure><ul id="e5412bda-d0f5-4873-906c-0fff86ab8e3f" class="bulleted-list"><li style="list-style-type:circle"><strong>Poisson Distribution:</strong></li></ul><p id="bb7940f4-85ae-45cf-a683-a308d500ffb9" class="">Bài toán:</p><figure id="8ef6f849-0de8-4056-8e5d-b8e3aecdf9a1" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2010.png"><img style="width:1309px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2010.png"/></a></figure><p id="6defbea3-f503-4a92-b135-1098c4febae3" class="">Code:</p><pre id="2cf91886-4ca6-4107-89c1-f498a0214640" class="code code-wrap"><code>import math
+mean = float(input(&quot;Enter the mean:&quot;))
+n = int(input(&quot;Numbers of k:&quot;))
+ask = input(&quot;Relationship of k(or/and):&quot;)
+if ask == &quot;or&quot;:
+    result = 0
+    for i in range (0,n):
+        k = int(input(&quot;Enter k:&quot;))
+        result = (math.exp(-mean)*mean**k)/math.factorial(k) + result
+else:
+    result = 0
+    for i in range(0, n):
+        k = int(input(&quot;Enter k:&quot;))
+        result = (math.exp(-mean) * mean ** k) / math.factorial(k) * result
+print(result)
+</code></pre><p id="579157d6-10cb-4b2c-81c2-5e0e64ef3925" class="">Output:</p></li></ul><figure id="38cbe410-3f15-4ff5-8fd3-f938dc0bca82" class="image" style="text-align:center"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2011.png"><img style="width:369px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2011.png"/></a></figure></blockquote><blockquote id="921923ef-0210-4275-b77f-703a67c7a51e" class="block-color-blue_background"><mark class="highlight-orange"><strong>Continuous Uniform Distribution:</strong></mark><p id="960a4b85-06d3-4af2-a011-8d46c45a5ab3" class="">Bài toán:</p><figure id="c7f89b4f-b53a-41fc-9c1f-b930e3b0ad6f" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2012.png"><img style="width:1311px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2012.png"/></a></figure><p id="7880d82c-4bad-40c7-970c-4d727e960372" class="">Code:</p><pre id="f787ec49-a11f-4891-92a3-e3aa6bbcecbd" class="code code-wrap"><code>import math
+print(&quot;input interval [a,b] and x where a &lt; b&quot;)
+a = int(input(&quot;input a:&quot;))
+b = int(input(&quot;input b:&quot;))
+x = int(input(&quot;input x:&quot;))
+if a &lt;= x &lt;= b:
+    p = 1/(b-a)
+else:
+    p = 0
+mean = (a+b)/2
+sd = math.sqrt(((b-a)**2)/12)
+print(f&quot;The probability is: {p}. The mean is: {mean}. The standard deviation is: {sd}&quot;)</code></pre><p id="11bae550-1be8-4025-aaed-62bcfe46c040" class="">Output:</p><figure id="e7721b95-1908-45cf-8a46-e772a23e9766" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2013.png"><img style="width:1085px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2013.png"/></a></figure></blockquote><blockquote id="3320911f-e379-4b98-88e1-a0a281ca6c72" class="block-color-blue_background"><mark class="highlight-orange"><strong>Standard Normal Distribution</strong></mark><strong>:</strong><p id="5078dd92-9766-4f17-b072-df7ac01e6d2e" class="">Bài toán:</p><figure id="215b8f8c-662e-4dff-82f4-4b1a863249f6" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2014.png"><img style="width:1294px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2014.png"/></a></figure><p id="61b05487-0863-4816-899c-85c17ea6bd0c" class="">Code:</p><pre id="c84963af-b863-42f0-b44f-e3f5c0d50702" class="code code-wrap"><code>from statistics import NormalDist
+mean = float(input(&quot;Enter your mean:&quot;))
+sd = float(input(&quot;Enter your standard deviation:&quot;))
+choice = int(input(&quot;Choose: 1, P(X &lt; a) 2, P(X &gt; a) 3,P(a &lt; X &lt; B)&quot;))
+if choice == 1:
+    a = int(input(&quot;input a:&quot;))
+    result = NormalDist(mu=mean, sigma=sd).cdf(a)
+elif choice == 2:
+    a = int(input(&quot;input a:&quot;))
+    result = 1 - NormalDist(mu=mean, sigma=sd).cdf(a)
+else:
+    a = int(input(&quot;input a:&quot;))
+    b = int(input(&quot;input b:&quot;))
+    result = NormalDist(mu=mean, sigma=sd).cdf(b)- NormalDist(mu=mean, sigma=sd).cdf(a)
+print(&quot;The probability is:&quot;, result)</code></pre><p id="c512ca6c-75a4-44be-a5cc-c4c260dda9e9" class="">Output:</p><figure id="a8da7bb9-cdbe-4904-a489-2d2dc81524f5" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2015.png"><img style="width:597px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2015.png"/></a></figure></blockquote><blockquote id="696cc039-9ee2-44b3-8794-d6bb96a10c94" class="block-color-blue_background"><mark class="highlight-orange"><strong>Central Limit Theorem</strong></mark><strong>:</strong><p id="2e0ea723-d58d-4439-8408-6958da6ddee5" class="">Bài toán:</p><figure id="cd2207e1-83ae-483e-842d-580c939f63e7" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2016.png"><img style="width:1294px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2016.png"/></a></figure><p id="252a9c0d-c811-432a-8f88-3c6c1b9383ce" class="">Code:</p><pre id="36eed688-a326-4fd6-96b2-f55d9451c3e5" class="code code-wrap"><code>import math
+from statistics import NormalDist
+mean = float(input(&quot;Enter your mean:&quot;))
+sd = float(input(&quot;Enter your standard deviation:&quot;))
+n = int(input(&quot;Enter your statistical sample number:&quot;))
+choice = int(input(&quot;Choose: 1, P(X &lt; a) 2, P(X &gt; a)&quot;))
+if choice == 1:
+    a = int(input(&quot;input a:&quot;))
+    ssd = sd/math.sqrt(n) #sample standard deviation
+    result = NormalDist(mu=mean, sigma=ssd).cdf(a)
+elif choice == 2:
+    a = int(input(&quot;input a:&quot;))
+    ssd = sd / math.sqrt(n)
+    result = 1 - NormalDist(mu=mean, sigma=ssd).cdf(a)
+print(&quot;The probability is:&quot;, result)</code></pre><p id="02f3127f-6f2b-48c0-b9cb-ab3a55ea7a11" class="">Output:</p><figure id="2750969b-f780-4c4f-b301-3c6410a64503" class="image"><a href="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2017.png"><img style="width:516px" src="Probability%20&amp;%20Statistics%20with%20Python%20b00163d7bc794beb80e267e598a7ff9f/Untitled%2017.png"/></a></figure></blockquote><p id="e90dcfda-ea00-4b5f-9941-6bb94ca8f222" class="">
+</p></div></article></body></html>
