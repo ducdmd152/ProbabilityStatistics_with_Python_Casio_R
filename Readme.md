@@ -1,5 +1,5 @@
 
-# Probability & Statistics with Casio & Programming Languages
+# 🧪Probability & Statistics with Casio & Programming Languages
 ### Authors:
 1. Nguyễn Đoàn Gia Tuấn
 2. Đào Mai Duy Đức
